@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toter.com</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #004137;
+            --secondary-color: #00A86B;
+            --accent-color: #F7941D;
+            --light-bg: #F5F5F5;
+            --white: #FFFFFF;
+            --text-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 20px; 
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+ 
+        .hamburger {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: var(--white);
+                position: absolute;
+                top: 70px;
+                right: 0;
+                width: 100%;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+
+/* Hero section */
+        .hero {
+            padding: 80px 0; 
+            background-color: var(--primary-color); 
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .hero-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 20px; /* Space between text and image */
+            max-width: 50%;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--white);
+            
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+            color: var(--white);
+        }
+
+        .hero-image {
+            flex: 1;
+            padding-left: 20px; /* Space between text and image */
+            max-width: 50%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        .hero-content .btn {
+            display: inline-block;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-content p:last-child {
+            display: flex;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-wrapper {
+                flex-direction: column; 
+            }
+
+            .hero-image, .hero-content {
+                max-width: 100%; 
+                padding: 0; /* Remove padding */
+            }
+
+            .hero h1 {
+                font-size: 28px; /* Adjust heading size */
+            }
+
+            .hero p {
+                font-size: 16px; /* Adjust paragraph size */
+            }
+        }
+
+
+
+        .features {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .cta {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .about {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .about-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            flex: 1;
+            padding-right: 20px;
+            max-width: 50%;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .about-content {
+            flex: 1;
+            padding-left: 20px;
+            max-width: 50%;
+        }
+
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .about-content .btn {
+            display: inline-block;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p:last-child {
+            display: flex;
+            justify-content: center;
+        }
+
+
+        @media (max-width: 768px) {
+        .about-wrapper {
+            flex-direction: column;
+        }
+
+        .about-image, .about-content {
+            max-width: 100%;
+            padding: 0;
+            }
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 24px;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial , sans-serif;
+            font-size: 17px;
+        }
+
+        .parallax {
+            position: relative;
+            height: 500px; /* Height of the parallax section */
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end; 
+            text-align: center; }
+
+        #myVideo {
+            position: absolute; /* Position absolute within the parallax section */
+            top: 100;
+            left: 100;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* Send video to the back */
+            object-fit: cover; /* Ensure the video covers the area */
+        }
+
+        .content {
+            position: relative;
+            z-index: 1; /* Keep text above the video */
+            background: rgba(0, 0, 0, 0.307); 
+            color: #fffefe;
+            padding: 10px;
+            width: 100%; 
+        }
+
+        .content h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            margin-bottom: 20px; /* Add space below the paragraph */
+        }
+
+        .btn {
+            padding: 10px 30px;
+            background-color: #E58300; 
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border: none; 
+        }
+
+        .btn:hover {
+            background-color: #C76B00; /* Darker shade for hover */
+        }
+
+
+        /* Popular Products Section */
+        .popular-products {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .popular-products h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .product-card img {
+            width: outo;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .product-card p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .product-card .btn {
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-card .btn:hover {
+            background-color: #E58300;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        @media (min-width: 1200px) {
+        .products-grid {
+            gap: 40px; 
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="C:\Users\Naseemibra\Desktop\image 2\logo.png"alt="Logo" style="height: 70px;"></div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <h1>Revolutionizing Waste Management</h1>
+                    <p>Efficient, sustainable, and smart solutions for a cleaner future.</p>
+                    <p>
+                        Join us on our journey towards a greener future through innovative waste management.
+                    </p>
+                    <p>
+                        <a href="#hero" class="btn">Get Started</a>
+                    </p>
+                </div>
+                <div class="hero-image">
+                    <img id="heroImage" src="C:\Users\Naseemibra\Desktop\image 2\toter hero 1.png" alt="Hero Image">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-image">
+                    <img src="C:\Users\Naseemibra\Desktop\image 2\toter about.png" alt="About Toter Image">
+                </div>
+                <div class="about-content">
+                    <h2>About Toter</h2>
+                    <p>
+                        At Toter, we believe in a cleaner, more sustainable future through smart waste management solutions. Our mission is to provide
+                        eco-friendly, efficient, and technologically advanced waste services that not only reduce waste but also improve the quality
+                        of life in the communities we serve.
+                    </p>
+                    <p>
+                        With a focus on innovation, we integrate cutting-edge technology like smart analytics to optimize waste collection, reduce
+                        carbon footprints, and enhance recycling efforts. Our team is dedicated to transforming waste management into a seamless,
+                        sustainable process for both residential and commercial clients.
+                    </p>
+                    <p>
+                        <a href="#contact" class="btn">Join us on our journey toward a greener future</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-recycle feature-icon"></i>
+                    <h3>Sustainable Solutions</h3>
+                    <p>Eco-friendly waste management practices for a greener planet</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-truck feature-icon"></i>
+                    <h3>Efficient Collection</h3>
+                    <p>Streamlined pickup services to keep your space clean</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h3>Smart Analytics</h3>
+                    <p>Data-driven insights to optimize waste management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="parallax" id="shop">
+        <video autoplay muted loop id="myVideo">
+            <source src="C:\Users\Naseemibra\Desktop\image 2\TOTER.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        
+        <div class="content">
+            <h2>Discover Our Innovative Products</h2>
+            <p>Upgrade your waste management with Toter's top-of-the-line products. 
+                <br>From durable bins to smart recycling systems, we have it all.</p>
+            <a href="#shop-now" class="btn">Shop Now</a>
+        </div>
+    </section>
+    
+    <section class="popular-products" id="popular-products">
+        <div class="container">
+            <h2>Most Popular Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="C:\Users\Naseemibra\Desktop\image 2\toter11.png" alt="Product 1">
+                    <h3>Recycling Bin</h3>
+                    <p>Durable and eco-friendly recycling bin for efficient waste management.</p>
+                    <a href="#" class="btn">Buy Now</a>
+                </div>
+                <div class="product-card">
+                    <img src="C:\Users\Naseemibra\Desktop\image 2\toter22.jpg" alt="Product 2">
+                    <h3>Smart Trash Can</h3>
+                    <p>Smart trash can with sensors to track waste levels and optimize collection.</p>
+                    <a href="#" class="btn">Buy Now</a>
+                </div>
+                <div class="product-card">
+                    <img src="C:\Users\Naseemibra\Desktop\image 2\toter3.jpg" alt="Product 3">
+                    <h3>Compost Bin</h3>
+                    <p>Compost bin for organic waste management and sustainable living.</p>
+                    <a href="#" class="btn">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Waste Management?</h2>
+            <a href="#" class="btn">Contact Us Today</a>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Toter</h3>
+                    <p>Toter is a leading provider of innovative waste management solutions, committed to creating a cleaner, more sustainable world.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@toter.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+
+         // Array of image URLs
+    const images = [
+        'https://www.toter.com/sites/default/files/styles/product_detail/public/2023-09/Toter_tilt_truck3.jpg?itok=64ZjLwc1',
+        'https://www.toter.com/sites/default/files/styles/product_detail/public/2020-12/_DSC9317.jpg?itok=FHZKt5Fc',
+        'https://www.toter.com/sites/default/files/styles/product_detail/public/2022-01/Toter_64Gallon_TwoWheelCan_Black_25564_Main_1.jpg?itok=rtBZRYPV',
+        'https://www.toter.com/sites/default/files/styles/product_detail/public/2021-05/Toter_Slimline_23Gallon_BodywCanandDocCutoutLid_SL000-30145_MidnightGray_AltImage1_LidSoldSeparately.jpg?itok=_JuJLjpU'
+        
+    ];
+
+    let currentIndex = 0; // Start with the first image
+
+    function changeImage() {
+        // Update the image source
+        currentIndex = (currentIndex + 1) % images.length; 
+        document.getElementById('heroImage').src = images[currentIndex]; // Change the image src
+    }
+
+    setInterval(changeImage,  3000);
+    </script>
+</body>
+</html>
